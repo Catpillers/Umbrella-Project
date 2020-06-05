@@ -2,6 +2,11 @@
   <div class="col-xl-10">
     <app-blackmarket-edit></app-blackmarket-edit>
     <hr>
-    <p>The list</p>
+   <ul class="list-group">
+     <a class="list-group-item"
+     *ngFor="let upgrade of upgrades">
+     {{ upgrade.name }} ({{upgrade.amount}})
+    </a> 
+   </ul>
   </div>
 </div>
