@@ -7,15 +7,10 @@ import { BioOrganicWeapon } from './models/bio-organic-weapon.model';
   styleUrls: ['./bio-organic-weapons.component.scss']
 })
 export class BioOrganicWeaponsComponent implements OnInit {
-  bow: BioOrganicWeapon;
 
   constructor() { }
 
   ngOnInit() {
-  }
-
-  addBowToList(data: BioOrganicWeapon){
-     this.bow = data;
   }
 
 }

@@ -13,6 +13,11 @@ import { BioOrganicWeaponItemComponent } from './bio-organic-weapons/bio-organic
 import { BlackmarketListComponent } from './blackmarket-list/blackmarket-list.component';
 import { BlackmarketEditComponent } from './blackmarket-list/blackmarket-edit/blackmarket-edit.component';
 import { BioOrganicWeaponsComponent } from './bio-organic-weapons/bio-organic-weapons.component';
+import { DropdownDirective } from './directives/dropdown.directive';
+import { BioOrganicWeaponsService } from './bio-organic-weapons/bio-organic-weapons.service';
+import { BlackMarketService } from './blackmarket-list/black-market.service';
+
+
 
 
 @NgModule({
@@ -24,7 +29,8 @@ import { BioOrganicWeaponsComponent } from './bio-organic-weapons/bio-organic-we
       BioOrganicWeaponDetailComponent,
       BioOrganicWeaponItemComponent,
       BlackmarketListComponent,
-      BlackmarketEditComponent
+      BlackmarketEditComponent,
+      DropdownDirective
    ],
    imports: [
       BrowserModule,
@@ -32,7 +38,10 @@ import { BioOrganicWeaponsComponent } from './bio-organic-weapons/bio-organic-we
       BrowserAnimationsModule,
       BsDropdownModule.forRoot()
    ],
-   providers: [],
+   providers: [
+      BioOrganicWeaponsService,
+      BlackMarketService
+   ],
    bootstrap: [
       AppComponent
    ]

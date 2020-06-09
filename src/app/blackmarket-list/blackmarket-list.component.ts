@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, DoCheck } from '@angular/core';
 
 import { Upgrade } from '../shared/upgrade.model';
+import { BlackMarketService } from './black-market.service';
 
 @Component({
   selector: 'app-blackmarket-list',
@@ -8,14 +9,14 @@ import { Upgrade } from '../shared/upgrade.model';
   styleUrls: ['./blackmarket-list.component.css']
 })
 export class BlackmarketListComponent implements OnInit {
-  upgrades: Upgrade[] = [
-    new Upgrade('M134 Minigun', 1),
-    new Upgrade('Kevlar coat', 1)
-  ];
+  upgrades: Upgrade[];
 
-  nstructor() { }
+  constructor(private marketService: BlackMarketService) { }
 
   ngOnInit() {
+    this.upgrades = this.marketService.getUpgrades();
+    this.marketService.updatedUpgrades.subscribe((context: Upgrade[]) => {
+      this.upgrades = context;
+    });
   }
-
 }

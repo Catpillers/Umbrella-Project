@@ -1,14 +1,13 @@
 <div class="row">
     <div class="col-xl-12">
-        <button class="btn btn-success">New B.O.W</button>
+        <button class="btn btn-warning">New B.O.W</button>
     </div>
 </div>
 <hr>
 <div class="row">
     <div class="col-xl-12">
         <app-bio-organic-weapon-item *ngFor="let bow of bows"
-        [bow]='bow'
-        (addBowToList)="sendBowToList($event)">
+        [bow]='bow'>
         </app-bio-organic-weapon-item>
     </div>
 </div>

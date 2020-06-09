@@ -1,0 +1,26 @@
+$item-colors: (
+    backGround: #710707b4,
+    h4: #f3f3f3,
+    borderColor: #f3f3f3c0
+);
+
+.selection {
+    margin-bottom: 0.7rem;
+    background-color: map-get($item-colors, backGround);
+    border-radius: 10px;
+    transition: transform .3s;
+    h4 {
+        color: map-get($item-colors, h4);
+        font-weight: bold;
+    }
+}
+
+.selection:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 3px 3px map-get($item-colors, borderColor);
+    border: 2px solid map-get($item-colors, borderColor);
+}
+
+a:visited {
+    color: map-get($item-colors, borderColor);
+}

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { BioOrganicWeapon } from '../models/bio-organic-weapon.model';
+import { BioOrganicWeaponsService } from '../bio-organic-weapons.service';
 
 @Component({
   selector: 'app-bio-organic-weapon-list',
@@ -8,20 +9,11 @@ import { BioOrganicWeapon } from '../models/bio-organic-weapon.model';
   styleUrls: ['./bio-organic-weapon-list.component.scss']
 })
 export class BioOrganicWeaponListComponent implements OnInit {
-@Output() addBowToList: EventEmitter<any> = new EventEmitter();
+  bows: BioOrganicWeapon[];
 
-
-bows: BioOrganicWeapon[]  = [
-   new BioOrganicWeapon('Nemesis', 'Type-03', './assets/img/Nemesis.png')
- ];
-
-  constructor() { }
+  constructor(private bowService: BioOrganicWeaponsService) { }
 
   ngOnInit() {
+    this.bows = this.bowService.getBows();
   }
-
-  sendBowToList(data: BioOrganicWeapon) {
-    this.addBowToList.emit(data);
-  }
-
 }

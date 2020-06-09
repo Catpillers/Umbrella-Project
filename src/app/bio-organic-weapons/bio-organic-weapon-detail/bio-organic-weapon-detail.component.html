@@ -1,36 +1,42 @@
-<div class="row">
-    <div class="col-xl-12">
-        <img [src]="bow.imagePath" alt="" class="img-responsive">
-    </div>
-</div>
-<div class="row">
-    <div class="col-xl-12">
-        <h1>{{bow.name}}</h1>
-    </div>
-</div>
-<div class="row">
-    <div class="col-xl-12">
-        <div class="btn-group" dropdown>
-            <button id="button-animated" dropdownToggle type="button" class="btn btn-danger dropdown-toggle"
-                aria-controls="dropdown-animated">Menu<span class="caret"></span>
-            </button>
-            <ul id="dropdown-animated" *dropdownMenu class="dropdown-menu" role="menu"
-                aria-labelledby="button-animated">
-                <li role="menuitem"><a class="dropdown-item" href="#">Add B.O.W to Black Market</a></li>
-                <li role="menuitem"><a class="dropdown-item" href="#">Edit B.O.W</a></li>
-                <li role="menuitem"><a class="dropdown-item" href="#">Dispose of B.O.W</a></li>
-            </ul>
+<ng-template [ngIf]="bow" [ngIfElse]="infoText">
+    <div class="row">
+        <div class="col-xl-12">
+            <img [src]="bow.imagePath" alt="" class="img-responsive">
         </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-xl-12">
-        {{bow.description}}
+    <div class="row">
+        <div class="col-xl-12">
+            <h1>{{bow.name}}</h1>
+        </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-xl-12">
-        Upgrades
+    <div class="row">
+        <div class="col-xl-12">
+            {{bow.description}}
+        </div>
     </div>
-</div>
- 
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="btn-group" dropdown>
+                <button id="button-animated" dropdownToggle type="button" class="btn btn-danger dropdown-toggle mb-2"
+                    aria-controls="dropdown-animated">Menu<span class="caret"></span>
+                </button>
+                <ul id="dropdown-animated" *dropdownMenu class="dropdown-menu" role="menu"
+                    aria-labelledby="button-animated">
+                    <li role="menuitem"><a class="dropdown-item" href="#" (click)='sendUpgrads()'>Get upgrades from Black Market</a></li>
+                    <li role="menuitem"><a class="dropdown-item" href="#">Edit B.O.W</a></li>
+                    <li role="menuitem"><a class="dropdown-item" href="#">Dispose of B.O.W</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xl-12">
+           <ul class="list-group">
+               <li class="list-group-item selection" *ngFor="let upgrade of bow.upgrades"> {{upgrade.name}}: {{upgrade.amount}}</li>
+           </ul>
+        </div>
+    </div>
+</ng-template>
+<ng-template #infoText>
+    <p>Select B.O.W to display</p>
+</ng-template>
