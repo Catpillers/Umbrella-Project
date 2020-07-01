@@ -2,3 +2,7 @@ a {
     cursor: pointer;
     color: black;
 }
+
+a:hover{
+    color: red;
+}

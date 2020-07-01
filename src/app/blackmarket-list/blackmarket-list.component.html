@@ -4,7 +4,9 @@
     <hr>
    <ul class="list-group">
      <a class="list-group-item"
-     *ngFor="let upgrade of upgrades">
+     *ngFor="let upgrade of upgrades; let i = index"
+     (click)='editExistingUpgrade(i)'
+     >
      {{ upgrade.name }} ({{upgrade.amount}})
     </a> 
    </ul>

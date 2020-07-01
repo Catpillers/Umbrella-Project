@@ -1,14 +1,14 @@
 $item-colors: (
     backGround: #710707b4,
     h4: #f3f3f3,
-    borderColor: #f3f3f3c0
+    borderColor: #f3f3f3c0,
 );
 
 .selection {
     margin-bottom: 0.7rem;
     background-color: map-get($item-colors, backGround);
     border-radius: 10px;
-    transition: transform .3s;
+    transition: transform 0.3s;
     h4 {
         color: map-get($item-colors, h4);
         font-weight: bold;
@@ -24,3 +24,15 @@ $item-colors: (
 a:visited {
     color: map-get($item-colors, borderColor);
 }
+
+a {
+    cursor: pointer;
+    margin-right: 2rem;
+    min-height: 125px;
+    max-height: 125px;
+}
+
+.list-group-item.active  {
+    border-color: white;
+}
+

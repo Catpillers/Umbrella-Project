@@ -1,0 +1,64 @@
+.custom {
+    border: 1px solid red;
+    padding: 10px;
+    text-align: center;
+    background: #80808094;
+    border-radius: 5px;
+}
+
+button {
+    margin: 1rem;
+}
+
+small {
+    color: white;
+}
+
+input {
+    border-left-width: 0.5rem;
+}
+
+input.ng-invalid.ng-touched {
+    border-left-color: red;
+}
+input.ng-valid.ng-touched {
+    border-left-color: green;
+}
+
+.image {
+    position: relative;
+    top: 0rem;
+    left: 45%;
+    width: 100px;
+    height: 100px;
+    margin: -60px 0 0 -60px;
+    -webkit-animation: spin 10s linear infinite;
+    -moz-animation: spin 10s linear infinite;
+    animation: spin 10s linear infinite;
+}
+@-moz-keyframes spin {
+    100% {
+        -moz-transform: rotateY(360deg);
+    }
+}
+@-webkit-keyframes spin {
+    100% {
+        -webkit-transform: rotateY(360deg);
+    }
+}
+@keyframes spin {
+    100% {
+        -webkit-transform: rotateY(360deg);
+        transform: rotateY(360deg);
+    }
+}
+
+h1 {
+ margin-right: 10rem;
+}
+
+.error{
+  text-align: center;
+  color: red;
+}
+

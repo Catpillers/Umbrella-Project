@@ -1,25 +1,45 @@
-
 $header-colors: (
     main: #2f2f2fcf,
     links: #fffffff0,
-    links2: #ff0101d4
+    links2: #ff0101d4,
 );
 
 nav {
-  margin-bottom: 5rem;
-  box-shadow: 0 3px 5px 2px red;
-  background-color: map-get($header-colors, main);
-  a, li > a  {
-      color: map-get($header-colors, links);
-  }
+    margin-bottom: 5rem;
+    box-shadow: 0 3px 5px 2px red;
+    background-color: map-get($header-colors, main);
+    a,
+    li > a {
+        color: map-get($header-colors, links);
+    }
 
-  a:hover, li > a:hover  {
-      color: map-get($header-colors, links2);
-  }
+    a:hover,
+    li > a:hover {
+        color: map-get($header-colors, links2);
+        cursor: pointer;
+    }
 
+    img {
+        width: 2.5rem;
+        color: map-get($header-colors, main);
+    }
 
-  img {
-     width: 2.5rem;
-     color:  map-get($header-colors, main); 
-  }
+    .manage {
+        background-color: map-get($header-colors, main);
+        cursor: pointer;
+    }
+    .dropdown-item:hover,
+    .dropdown-item:focus {
+        color: #16181b;
+        text-decoration: none;
+        background-color: #a20b0b57;
+    }
+
+    .navbar-brand.brand.active {
+        color: map-get($header-colors, links2) !important;
+    }
+}
+
+.navbar-light .navbar-nav .nav-link.active {
+    color: map-get($header-colors, links2);
 }

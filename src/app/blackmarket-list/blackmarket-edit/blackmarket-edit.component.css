@@ -1,3 +1,13 @@
-.spacing {
- margin: 0px 5px 0px 5px;    
+button {
+    margin: 0px 5px 0px 5px;
+}
+
+input.ng-invalid.ng-touched {
+    border-left-width: 6px;
+    border-left-color: red;
+}
+
+input.ng-valid {
+    border-left-width: 6px;
+    border-left-color: green;
 }

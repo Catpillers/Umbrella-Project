@@ -1,8 +1,9 @@
-import { Injectable, Output, EventEmitter } from '@angular/core';
+import { Injectable } from '@angular/core';
 
 import { BioOrganicWeapon } from './models/bio-organic-weapon.model';
 import { Subject } from 'rxjs';
-import { Upgrade } from '../shared/upgrade.model';
+
+
 
 
 @Injectable({
@@ -10,26 +11,48 @@ import { Upgrade } from '../shared/upgrade.model';
 })
 
 export class BioOrganicWeaponsService {
-  addBowToDetails = new EventEmitter<BioOrganicWeapon>();
+  bowsUpdated = new Subject<BioOrganicWeapon[]>();
+  newOrEditMod = new Subject<boolean>();
 
-  private bows: BioOrganicWeapon[] = [
-    new BioOrganicWeapon('Nemesis', 'T-03', './assets/img/Nemesis.png',
-    [
-      new Upgrade('M134 Minigun', 1),
-      new Upgrade('Kevlar coat', 1)
-    ]),
+  private bows: BioOrganicWeapon[] = [];
 
-    new BioOrganicWeapon('Mr.X', 'T-00', './assets/img/T-00.webp',
-    [
-      new Upgrade('Kevlar coat', 1),
-      new Upgrade('Kevlar hat', 1)
-    ])
-  ];
+  constructor() { }
 
+
+
+  private getUpdateBowList(): void {
+    this.bowsUpdated.next(this.bows.slice());
+  }
 
   getBows(): BioOrganicWeapon[] {
     return this.bows.slice();
   }
 
-  constructor() { }
+  addNewBow(bow: BioOrganicWeapon) {
+    this.bows.push(bow);
+    this.getUpdateBowList();
+  }
+
+  upDateBow(bow: BioOrganicWeapon) {
+    const bowIndex = this.bows.findIndex(_ => _.id === bow.id);
+    this.bows[bowIndex] = bow;
+    this.getUpdateBowList();
+  }
+
+
+  getBow(id: number) {
+    return this.bows.find(_ => _.id === id);
+  }
+
+
+  deleteBow(id: number) {
+    this.bows = this.bows.filter(_ => _.id !== id);
+    this.getUpdateBowList();
+  }
+
+  getBowFromStorage(bows: BioOrganicWeapon[]) {
+    this.bows = bows;
+    this.getUpdateBowList();
+  }
+
 }

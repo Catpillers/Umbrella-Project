@@ -10,21 +10,28 @@ import { Subject } from 'rxjs';
 
 export class BlackMarketService {
   updatedUpgrades = new Subject<Upgrade[]>();
+  editUpgrade = new Subject<number>();
+  image: string;
 
-  private upgrades: Upgrade[];
+  private upgrades: Upgrade[] = [];
 
   constructor() { }
 
-  getBowUpgrades(bowUpgrades: Upgrade[]) {
+  getBowUpgrades(bowUpgrades: Upgrade[], bowImage: string) {
     this.upgrades = bowUpgrades;
+    this.image = bowImage;
   }
 
   getUpgrades(): Upgrade[] {
     return this.upgrades.slice();
   }
 
-  getUpdatedUpgrades() {
+ private getUpdatedUpgrades() {
     this.updatedUpgrades.next(this.upgrades.slice());
+  }
+
+  getUpgrade(index: number) {
+    return this.upgrades[index];
   }
 
   addUpgrade(data: Upgrade) {
@@ -32,14 +39,13 @@ export class BlackMarketService {
     this.getUpdatedUpgrades();
   }
 
-  deleteUpgrade() {
-    this.upgrades.pop();
+  updateUpgrade(upgrade: Upgrade, index: number) {
+    this.upgrades[index] = upgrade;
     this.getUpdatedUpgrades();
   }
 
-  clearUpgrades() {
-    this.upgrades = [];
+  deleteUpgrade(index: number) {
+    this.upgrades.splice(index, 1);
     this.getUpdatedUpgrades();
   }
-
 }

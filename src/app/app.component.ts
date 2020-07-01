@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from './auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -6,12 +8,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 
-export class AppComponent {
-  title = 'umbrella-project';
-  displaying: string;
+export class AppComponent implements OnInit {
+  constructor(private authService: AuthService, private router: Router) { }
 
+  ngOnInit() {
+    if (this.authService.autoLogin()) {
+      this.router.navigate(['/bio-organic-weapons']);
+    }
 
-  setDisplaing(component: string){
-    this.displaying = component;
   }
 }

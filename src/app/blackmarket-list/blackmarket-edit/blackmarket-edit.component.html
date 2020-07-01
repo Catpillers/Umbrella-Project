@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-xl-12">
-    <form #blackMarket>
+    <form #blackMarketForm = "ngForm" (ngSubmit)='onAddUpgrade()'>
       <div class="row">
         <div class="col-sm-5 form-group">
           <label for="name">Name</label>
@@ -8,22 +8,35 @@
           type="text" 
           id="name" 
           class="form-control" 
-          #nameInput>
+          name = "name"
+          required
+          ngModel>
         </div>
         <div class="col-sm-2 form-group">
           <label for="amount">Amount</label>
           <input 
           type="number" 
           id="amount" 
-          class="form-control" 
-          #amountInput>
+          class="form-control"
+          name = "amount"
+          required
+          ngModel
+          pattern="^[1-9]+[0-9]*$"
+          min="1" 
+          >
         </div>
       </div>
       <div class="row">
         <div class="col-xl-12">
-          <button class="btn btn-success" type="submit" (click)='onAddUpgrade($event)' #mainButton>Add</button>
-          <button class="btn btn-danger spacing" type="btn"(click)='deleteUpgrade($event)'>Delete</button>
-          <button class="btn btn-warning" type="btn" (click)='deleteUpgrades($event)'>Clear</button>
+          <button class="btn btn-success" 
+                  type="submit"
+                  [disabled]="!blackMarketForm.valid">{{ editMode ? 'Update' : 'Add' }}</button>
+          <button class="btn btn-danger" 
+                  type="button"
+                  (click)='deleteUpgrade()'
+                  *ngIf="editMode"
+                  >Delete</button>
+          <button class="btn btn-warning" type="button" (click)='reset()'>Clear</button>
         </div>
       </div>
     </form>

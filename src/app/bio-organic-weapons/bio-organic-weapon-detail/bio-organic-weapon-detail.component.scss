@@ -3,9 +3,17 @@
     color: black;
     font-weight: bold;
     font-size: 1rem;
-    max-width: 20em;
+    max-width: 25em;
 }
 
 img {
-    max-width: 230px;
+    max-width: 320px;
+}
+
+a {
+    cursor: pointer;
+}
+
+button{
+    margin: 0.5rem 14em 0;
 }

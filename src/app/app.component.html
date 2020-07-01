@@ -1,9 +1,8 @@
-<app-header (changeComponent)='setDisplaing($event)'></app-header>
+<app-header></app-header>
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <app-bio-organic-weapons *ngIf='displaying=== "bow"'></app-bio-organic-weapons>
-            <app-blackmarket-list *ngIf='displaying === "market"'></app-blackmarket-list>
+            <router-outlet></router-outlet>
         </div>
     </div>
 </div>

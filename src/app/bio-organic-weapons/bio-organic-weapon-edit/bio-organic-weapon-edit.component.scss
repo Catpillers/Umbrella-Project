@@ -1,0 +1,42 @@
+form {
+    .row {
+        margin-top: 0.5rem;
+        justify-content: center;
+    }
+    input {
+        background-color: transparentize($color: #fdfdfd, $amount: 0.2);
+        border-left-width: 0.4em;
+    }
+
+    input.ng-invalid {
+        border-left-color: #790d0df8;
+    }
+
+    input.ng-valid {
+        border-left-color: #076113e8;
+    }
+
+    textarea {
+        background-color: transparentize($color: #fdfdfd, $amount: 0.2);
+    }
+
+    .submit {
+        background-color: #11a011;
+        border-color: #11a011;
+    }
+
+    .cancel {
+        background-color: #930e1b;
+        border-color: #930e1b;
+        margin: 0 0.5em;
+    }
+
+    .dispose {
+        margin-top: 2rem;
+    }
+
+    .img-responsive {
+        width: 150px;
+        margin-left: 15rem;
+    }
+}

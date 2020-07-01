@@ -1,0 +1,90 @@
+<div class="row">
+    <div class="col-xl-12">
+        <form [formGroup]="bowForm" (ngSubmit)="createBow()">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="from-group">
+                        <label for="name">B.O.W Name</label>
+                        <input 
+                        class="form-control"
+                        type="text" 
+                        id="name"
+                        formControlName="name"
+                        >
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="from-group">
+                        <label for="imagePath">B.O.W Image</label>
+                        <input 
+                        class="form-control" 
+                        type="text" 
+                        id="imagePath"
+                        formControlName="imagePath"
+                        >
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-12">
+                    <img [src]="bowForm.get('imagePath').value" alt="B.O.W Image" class="img-responsive">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="from-group">
+                        <label for="information">Information</label>
+                        <textarea 
+                        class="form-control" 
+                        type="text" 
+                        id="information" 
+                        rows="1"
+                        formControlName="information"
+                        ></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-12">
+                    <button type="submit" class="btn btn-success submit confirm" [disabled]='!bowForm.valid'>Confirm</button>
+                    <button type="button" class="btn btn-danger cancel"(click)='clearBowForm()'>Dispose</button>
+                    <button type="button" class="btn btn-warning" (click)='newUpgrade()'>Add Upgrade</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-12" formArrayName="upgrades">
+                    <div class="row" 
+                        *ngFor="let upgrades of bowForm.get('upgrades')['controls']; let i = index"
+                        [formGroupName]='i'
+                        >
+                        <div class="col-xl-8">
+                            <label for="information">Upgrades</label>
+                            <input 
+                            type="text" 
+                            class="form-control" 
+                            id="information"
+                            formControlName="name"
+                            >
+                        </div>
+                        <div class="col-xl-2">
+                            <label for="amount">Amount</label>
+                            <input 
+                            type="number" 
+                            class="form-control" 
+                            formControlName="amount"
+                            id="amount"
+                            min="0"
+                            max="99"
+                            >
+                        </div>
+                        <div class="col-xl-2">
+                            <button class="btn btn-danger dispose"(click)='deleteUpgrade(i)'>Dispose</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

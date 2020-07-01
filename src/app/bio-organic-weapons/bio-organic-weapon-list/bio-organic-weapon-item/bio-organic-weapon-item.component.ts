@@ -1,7 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { BioOrganicWeapon } from '../../models/bio-organic-weapon.model';
-import { BioOrganicWeaponsService } from '../../bio-organic-weapons.service';
+
+
 
 @Component({
   selector: 'app-bio-organic-weapon-item',
@@ -11,13 +12,8 @@ import { BioOrganicWeaponsService } from '../../bio-organic-weapons.service';
 export class BioOrganicWeaponItemComponent implements OnInit {
   @Input() bow: BioOrganicWeapon;
 
-  constructor(private bowService: BioOrganicWeaponsService) { }
+  constructor() { }
 
   ngOnInit() {
   }
-
-  sendBowDataToList() {
-      this.bowService.addBowToDetails.emit(this.bow);
-  }
-
 }

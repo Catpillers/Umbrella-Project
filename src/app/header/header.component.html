@@ -1,28 +1,42 @@
 <nav class="navbar navbar-expand-lg navbar-light">
     <div class="navbar-header ">
-        <a href="#" class="navbar-brand">
+        <a class="navbar-brand brand" 
+        [routerLink]="['/authentication']"
+        [routerLinkActive]="'active'">
         <img src="./assets/img/logo.png" alt="Umbrella Logo">
         Umbrella Corporation</a>
     </div>
     <div class="collapse navbar-collapse">
-        <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav" *ngIf="isAuthenticated">
             <li class="nav-item">
-                <a class="nav-link" href="#" (click)='changeToBowData()'>B.O.W'S</a>
+                <a class="nav-link" 
+                [routerLink]="['/bio-organic-weapons']"
+                [routerLinkActive]="'active'"
+                (click)='newOrEditMod()'
+                >B.O.W'S</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" (click)='changeToMarketData()'>Black Market</a>
+                <a class="nav-link" 
+                [routerLink]="['/blackmarket']"
+                [routerLinkActive]="'active'"
+                >Black Market</a>
             </li>
         </ul>
         <div class="navbar-nav side ml-auto">
-            <div class="btn-group" dropdown placement="bottom right">
+            <ul class="nav navbar-nav" *ngIf="isAuthenticated">
+                <li class="nav-item mr-3">
+                    <a class="nav-link" (click)="logOut()">Logout</a>
+                </li>
+            </ul>
+            <div class="btn-group" dropdown placement="bottom right" *ngIf="isAuthenticated">
                 <button id="button-alignment" dropdownToggle type="button"
                         class="btn btn-danger dropdown-toggle" aria-controls="dropdown-alignment">
                   Manage <span class="caret"></span>
                 </button>
-                <ul id="dropdown-alignment" *dropdownMenu class="dropdown-menu dropdown-menu-right"
+                <ul id="dropdown-alignment" *dropdownMenu class="dropdown-menu dropdown-menu-right manage"
                     role="menu" aria-labelledby="button-alignment">
-                  <li role="menuitem"><a class="dropdown-item" href="#">Save Data</a></li>
-                  <li role="menuitem"><a class="dropdown-item" href="#">Fetch Data</a></li>
+                  <li role="menuitem"><a class="dropdown-item" (click)="sendBowData()">Save Data</a></li>
+                  <li role="menuitem"><a class="dropdown-item" (click)="getBowData()">Fetch Data</a></li>
                 </ul>
               </div>
         </div>

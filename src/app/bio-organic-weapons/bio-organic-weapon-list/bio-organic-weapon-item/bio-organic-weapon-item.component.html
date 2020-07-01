@@ -1,4 +1,6 @@
-<a href="#" class="list-group-item clearfix selection" (click)="sendBowDataToList()">
+<a class="list-group-item clearfix selection" 
+[routerLink]="[bow.id]"
+[routerLinkActive]="'active'">
     <div class="float-left">
         <h4 class="list-group-item-heading">{{bow.name}}</h4>
         <p class="list-group-item-text">{{bow.description}}</p>
